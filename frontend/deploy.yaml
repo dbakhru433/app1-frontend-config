@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+  namespace: app1-ns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: frontend-container
+        # Use your image name here (e.g., cloudwithvjosh/app1-frontend:v1.0.0)
+        image: dbakhrucpg/app1-frontend:v1.0.0
+        ports:
+        - containerPort: 4000
+        env:
+        - name: BACKEND_URL
+          # Matches the backend-svc name and port we created earlier
+          value: "http://backend-svc:5000"
