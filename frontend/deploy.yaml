@@ -17,6 +17,7 @@ spec:
       - name: frontend-container
         # Use your image name here (e.g., cloudwithvjosh/app1-frontend:v1.0.0)
         image: dbakhrucpg/app1-frontend-container:v1.0.0
+        imagePullPolicy: Always
         ports:
         - containerPort: 4000
         env:
